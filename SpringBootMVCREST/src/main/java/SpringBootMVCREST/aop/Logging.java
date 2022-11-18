@@ -30,6 +30,7 @@ public class Logging {
     @Pointcut("execution(* SpringBootMVCREST.services.*.*(..))")
     public void infoAboutService() {}
 
+
     @Around("infoAboutService())")
     public Object serviceLog(ProceedingJoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();

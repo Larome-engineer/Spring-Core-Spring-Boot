@@ -1,7 +1,6 @@
 package SpringBootDataJPA.services;
 
 import SpringBootDataJPA.aop.annotation.MET;
-import SpringBootDataJPA.aop.annotation.MyDeprecated;
 import SpringBootDataJPA.models.Person;
 import SpringBootDataJPA.repositories.PeopleRepository;
 import SpringBootDataJPA.services.serviceInterfaces.PeopleService;

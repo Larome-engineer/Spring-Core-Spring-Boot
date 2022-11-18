@@ -20,12 +20,21 @@ public class Logging {
     public void loggableMethod() {
     }
 
-    @Pointcut("@annotation(SpringBootDataJPA.aop.annotation.MyDeprecated)")
+    @Pointcut("@annotation(java.lang.annotation.Retention)")
     public void deprecated() {
     }
 
     @Pointcut("execution(* SpringBootDataJPA.services.*.*(..))")
     public void infoAboutService() {}
+
+    @Pointcut("execution(* org.springframework.shell.standard.commands.Quit.quit()))")
+    public void sortedTime() {}
+
+    @After("sortedTime()")
+    public void after() {
+        executionMap.get();
+    }
+
 
     @Around("infoAboutService())")
     public Object serviceLog(ProceedingJoinPoint joinPoint) {
