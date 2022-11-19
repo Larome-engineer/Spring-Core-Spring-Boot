@@ -8,6 +8,9 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
+import java.util.List;
+import java.util.Map;
+
 @Slf4j
 @Aspect
 @Component
@@ -20,7 +23,7 @@ public class Logging {
     public void loggableMethod() {
     }
 
-    @Pointcut("@annotation(java.lang.annotation.Retention)")
+    @Pointcut("@annotation(SpringBootDataJPA.aop.annotation.MyDeprecated)")
     public void deprecated() {
     }
 
@@ -28,10 +31,10 @@ public class Logging {
     public void infoAboutService() {}
 
     @Pointcut("execution(* org.springframework.shell.standard.commands.Quit.quit()))")
-    public void sortedTime() {}
+    public void allMethodTimeAfterExecution() {}
 
-    @After("sortedTime()")
-    public void after() {
+    @After("allMethodTimeAfterExecution()")
+    public void sortedMethodList() {
         executionMap.get();
     }
 
@@ -65,7 +68,7 @@ public class Logging {
             stopWatch.stop();
             String res = "Время выполнения: " + className + "." + methodName + " :: " + stopWatch.getTotalTimeMillis() + " ms";
             log.info(res);
-            executionMap.add(methodName, stopWatch.getTotalTimeMillis());
+            executionMap.add("Метод: " + methodName + "." + " Время выполнения(мс)", stopWatch.getTotalTimeMillis());
         }
     }
 

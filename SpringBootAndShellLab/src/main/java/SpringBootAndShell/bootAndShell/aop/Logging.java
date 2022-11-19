@@ -31,10 +31,10 @@ public class Logging {
     public void infoAboutService() {}
 
     @Pointcut("execution(* org.springframework.shell.standard.commands.Quit.quit()))")
-    public void sortedTime() {}
+    public void allMethodTimeAfterExecution() {}
 
-    @After("sortedTime()")
-    public void after() {
+    @After("allMethodTimeAfterExecution()")
+    public void sortedMethodList() {
         executionMap.get();
     }
 
