@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import spring.jdbc.aop.Logging;
 import spring.jdbc.dao.PersonDAOImpl;
 import spring.jdbc.services.CurrentLocaleServiceImpl;
 import spring.jdbc.services.IOServiceImpl;
@@ -21,11 +20,6 @@ import java.util.Scanner;
 @Configuration
 @ComponentScan("spring.jdbc")
 public class AppConfig {
-
-    @Bean
-    public Logging logging() {
-        return new Logging();
-    }
 
     @Bean
     PersonDAOImpl personDAO(){

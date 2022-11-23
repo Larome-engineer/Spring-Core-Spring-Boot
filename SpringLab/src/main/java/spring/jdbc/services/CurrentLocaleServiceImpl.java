@@ -20,7 +20,7 @@ public class CurrentLocaleServiceImpl implements CurrentLocaleService {
     private static final Map<String, ResourceBundle> supportLocale = Map.of(
             "en", ResourceBundle.getBundle("bundle", new Locale("en")),
             "fr", ResourceBundle.getBundle("bundle", new Locale("fr"))
-     );
+    );
 
     @Override
     public ResourceBundle set(String lang, ResourceBundle message) {

@@ -24,7 +24,6 @@ class PeopleServiceImplTest {
     @InjectMocks
     private PeopleServiceImpl peopleService;
 
-
     @Test
     void findAllPeople() {
         var people = new ArrayList<Person>();
