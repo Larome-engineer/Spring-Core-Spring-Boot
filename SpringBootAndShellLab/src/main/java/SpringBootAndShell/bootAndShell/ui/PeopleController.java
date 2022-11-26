@@ -48,7 +48,7 @@ public class PeopleController {
         }
     }
 
-    @ShellMethod(value = "show all people in the table", key = "all")
+    @ShellMethod(value = "show all people in the table", key = "findAll")
     @ShellMethodAvailability("availableInMainMenu")
     public List<PersonDTO> showAllPeople(){
         var people = peopleService.findAll().stream()
@@ -64,7 +64,7 @@ public class PeopleController {
         }
     }
 
-    @ShellMethod(value = "show person by id", key = "byId")
+    @ShellMethod(value = "show person by id", key = "findById")
     public PersonDTO getById(int id) {
         var person = convertToPersonDTO(peopleService.findById(id));
         if (person.getName() == null) {
@@ -76,7 +76,7 @@ public class PeopleController {
         }
     }
 
-    @ShellMethod(value = "show person by name", key = "byName")
+    @ShellMethod(value = "show person by name", key = "findByName")
     public PersonDTO showPersonByName(String name){
         var person = convertToPersonDTO(peopleService.findByName(name));
 

@@ -1,7 +1,6 @@
 package SpringBootAndShell.bootAndShell.services;
 
 import SpringBootAndShell.bootAndShell.aop.annotation.MET;
-import SpringBootAndShell.bootAndShell.aop.annotation.MyDeprecated;
 import SpringBootAndShell.bootAndShell.services.servicesInterface.CurrentLocaleService;
 import SpringBootAndShell.bootAndShell.services.servicesInterface.MessageService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ public class MessageServiceImpl implements MessageService {
 
     @MET
     @Override
-    @MyDeprecated
+    @Deprecated
     public String localize(String code, Object... params) {
         return messageSource.getMessage(code, params, currentLocaleService.get());
     }

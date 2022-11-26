@@ -1,7 +1,6 @@
 package SpringBootDataJPA.services;
 
 import SpringBootDataJPA.aop.annotation.MET;
-import SpringBootDataJPA.aop.annotation.MyDeprecated;
 import SpringBootDataJPA.services.serviceInterfaces.CurrentLocaleService;
 import SpringBootDataJPA.services.serviceInterfaces.MessageService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class MessageServiceImpl implements MessageService {
 
     @MET
     @Override
-    @MyDeprecated
+    @Deprecated
     public String localize(String code, Object... params) {
         return messageSource.getMessage(code, params, currentLocaleService.get());
     }

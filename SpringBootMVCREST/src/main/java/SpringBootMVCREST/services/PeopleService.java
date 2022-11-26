@@ -1,7 +1,6 @@
 package SpringBootMVCREST.services;
 
 import SpringBootMVCREST.aop.annotation.MET;
-import SpringBootMVCREST.aop.annotation.MyDeprecated;
 import SpringBootMVCREST.repositories.PeopleRepository;
 import SpringBootMVCREST.utils.exceptions.PersonNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +32,7 @@ public class PeopleService {
 
     @MET
     @Transactional
-    @MyDeprecated
+    @Deprecated // Повесил для проверки отрабатывания WARNING на "Deprecated-методе" при создании человека
     public void create(Person person) {
         enrichPerson(person);
         peopleRepository.save(person);

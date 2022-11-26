@@ -23,9 +23,13 @@ public class Logging {
     public void loggableMethod() {
     }
 
-    @Pointcut("@annotation(SpringBootJpaHibernate.aop.annotation.MyDeprecated)")
+    @Pointcut("@annotation(java.lang.Deprecated)")
     public void deprecated() {
     }
+
+    @Pointcut("execution(* SpringBootJpaHibernate.*.*.*(..))")
+    public void executionDeprecated() {}
+
 
     @Pointcut("execution(* SpringBootJpaHibernate.services.*.*(..))")
     public void infoAboutService() {}
@@ -67,11 +71,12 @@ public class Logging {
             stopWatch.stop();
             String res = "Время выполнения: " + className + "." + methodName + " :: " + stopWatch.getTotalTimeMillis() + " ms";
             log.info(res);
-            executionMap.add(methodName, stopWatch.getTotalTimeMillis());
+            executionMap.add("Метод: " + methodName + " " + "из класса " + className + "." + " Время выполнения(мс)",
+                    stopWatch.getTotalTimeMillis());
         }
     }
 
-    @Around("deprecated()")
+    @Around("executionDeprecated() && deprecated()")
     public Object logDeprecated(ProceedingJoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         String className = methodSignature.getDeclaringType().getSimpleName();

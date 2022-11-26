@@ -15,6 +15,7 @@ public class MessageServiceImpl implements MessageService {
 
     @MET
     @Override
+    @Deprecated
     public String localize(String code, Object... params) {
         return messageSource.getMessage(code, params, currentLocaleService.get());
     }

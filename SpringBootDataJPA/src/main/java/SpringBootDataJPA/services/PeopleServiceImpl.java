@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 //  @MET - Measuring the Execution Time (MET)
-//  @MyDeprecated - My exact counterpart of the Deprecated annotation
 
 @Slf4j
 @Service
@@ -26,6 +25,7 @@ public class PeopleServiceImpl implements PeopleService {
 
     @MET
     @Override
+    @Deprecated // Повесил для проверки работы логирования при Deprecated аннотации
     public List<Person> findAll() {
         return peopleRepository.findAll();
     }
